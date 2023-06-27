@@ -5,7 +5,7 @@
  * @dest: buffer reciving copies of src
  * Return: @dest.
  */
-void *_strcpy(char *dest, char *src)
+char *_strcpy(char *dest, const char *src)
 {
 	int i, len = 0;
 
@@ -19,21 +19,6 @@ void *_strcpy(char *dest, char *src)
 		dest[i] = '\0';
 
 	return (dest);
-}
-/**
- * _strlen  - change value of to integers
- * @s: a pointer to a String
- * Return: tength of s.
- */
-int _strlen(char *s)
-{
-	int i = 0;
-
-	while (*(s + i) != '\0')
-	{
-		i++;
-	}
-	return (i);
 }
 /**
  *  _atoi - convert a string to an integer
@@ -88,7 +73,7 @@ int _atoi(char *s)
  * @s: a pointer to a String
  * Return: length of s.
  */
-int _strlen(char *s)
+int _strlen(const char *s)
 {
 	int i = 0;
 
@@ -133,4 +118,31 @@ char *_strcat(char *dest, char *src)
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
+}
+/**
+ * _strncpy - copy a string with a specified maximum length
+ * @s1: the destination string
+ * @s2: the source string
+ * @n: the maximum number of characters to copy
+ *
+ * Return: a pointer to the destination string
+ */
+char *_strncpy(char *s1, const char *s2, int n)
+{
+	char *ptr = s1;
+
+	while (n > 0 && *s2 != '\0')
+	{
+		*s1 = *s2;
+		s1++;
+		s2++;
+		n--;
+	}
+	while (n > 0)
+	{
+		*s1 = '\0';
+		s1++;
+		n--;
+	}
+	return (ptr);
 }
